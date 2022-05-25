@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int controleMenu=1;
-
+int controleMenu=0;
 struct Node{
  int valor;
  struct Node *prox;
 };
+
 typedef struct Node node;
 
 void inserir(node **p)
@@ -43,20 +43,21 @@ void inserir(node **p)
     }
 }
 
-void mostraLista(node *p)
-{
+void mostraLista(node *p){
+	printf("Lista: \n");
     while(p != NULL)
     {
-        printf("Lista: \n");
         printf("%d \n", p->valor);
         p = p->prox;
-      
     }
 }
 
-void Menu(){
+int main(void){
+
 	node *inicio = NULL;
-	
+  char opcao = 's';
+
+	do{
 	printf(" ---------- Menu --------- \n");
 	printf("1 - Inserir \n");
 	printf("2 - Exibir \n");
@@ -67,22 +68,28 @@ void Menu(){
 	switch(op){
 
 		case 1:
-			inserir(&inicio);
-		break;
-		
-    case 2:
 			
-		  mostraLista(inicio);
-		break;
-		case 3:
-			printf("Saindo...");
-			exit(1);
-		break;
-		default:
-		printf("Digite uma opção válida");
-	}
-}
+			   while( opcao == 's' || opcao == 'S' ){
+        	inserir(&inicio);
 
-int main(){
-	do{Menu();}while(controleMenu ==1);
+        	printf("Deseja inserir outro? (S/N)\n");
+        	scanf(" %c", &opcao);
+    		}
+		break;
+    
+    case 2:
+			mostraLista(inicio);
+    break;
+
+    case 3:
+			exit(1);
+    break;
+
+    default:
+
+      printf("Digite uma opção válida");
+	}
+	
+	}while(controleMenu ==1);
+
 }
