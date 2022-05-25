@@ -82,7 +82,7 @@ int main(void){
     break;
 
     case 3:
-      printf("Saindo...");
+      printf("Saindo... \n");
 			exit(1);
     break;
 
