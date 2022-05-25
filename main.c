@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int controleMenu=0;
+int controleMenu=1;
 struct Node{
  int valor;
  struct Node *prox;
@@ -82,12 +82,13 @@ int main(void){
     break;
 
     case 3:
+      printf("Saindo...");
 			exit(1);
     break;
 
     default:
 
-      printf("Digite uma opção válida");
+      printf("Digite uma opção válida \n");
 	}
 	
 	}while(controleMenu ==1);
